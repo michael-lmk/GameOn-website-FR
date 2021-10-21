@@ -17,12 +17,12 @@
         <img alt="logo" src="Logo.png" width="auto" height="auto" />
         </div>
         <div class="main-navbar">
-        
-        <a href="#" class="active"><span>Accueil</span></a>
-        <a href="#"><span>Détails de l'évènement</span></a>
-        <a href="#"><span>À propos</span></a>
-        <a href="#"><span>Contact</span></a>
-        <a href="#"><span>Évènements passés</span></a>
+
+        <a href="#" class="active"><span class="border-bottom">Accueil</span></a>
+        <a href="#"><span class="border-bottom">Détails de l'évènement</span></a>
+        <a href="#"><span class="border-bottom">À propos</span></a>
+        <a href="#"><span class="border-bottom">Contact</span></a>
+        <a href="#"><span class="border-bottom">Évènements passés</span></a>
         <a href="javascript:void(0);" class="icon" onclick="editNav()">
             <i class="fa fa-bars"></i>
         </a>
@@ -54,7 +54,7 @@
 
         <div class="bground">
             <div class="content">
-            <span class="close"></span>
+            <span class="close func-close-modal btn-close"></span>
             <div class="modal-body">
                 <div id="loader" class="lds-ripple"><div></div><div></div></div>
                     
@@ -68,13 +68,8 @@
                
                 <div
                     class="formData">
-                    <label>Prénom</label><br>
-                    <div class="condition">
-                        <ul>
-                            <li>Champs obligatoire</li>
-                            <li>Minimun 2 caractères</li>
-                        </ul>
-                    </div>
+                    <label for="first">Prénom</label>
+                    
                     <input
                         class="text-control"
                         type="text"
@@ -83,17 +78,18 @@
                         minlength="2"
                         required
                         placeholder="Pierre"
-                    /><br>
-                </div>
-                <div
-                    class="formData">
-                    <label for="last">Nom</label><br>
+                    />
                     <div class="condition">
                         <ul>
                             <li>Champs obligatoire</li>
                             <li>Minimun 2 caractères</li>
                         </ul>
                     </div>
+                </div>
+                <div
+                    class="formData">
+                    <label for="last">Nom</label>
+                    
                     <input
                         class="text-control"
                         type="text"
@@ -101,17 +97,18 @@
                         name="last"
                         required
                         placeholder="Pierre"
-                    /><br>
-                </div>
-                <div
-                    class="formData">
-                    <label for="email">E-mail</label><br>
+                    />
                     <div class="condition">
                         <ul>
                             <li>Champs obligatoire</li>
-                            <li>Adresse Email valide</li>
+                            <li>Minimun 2 caractères</li>
                         </ul>
                     </div>
+                </div>
+                <div
+                    class="formData">
+                    <label for="email">E-mail</label>
+                    
                     <input
                         class="text-control"
                         type="email"
@@ -119,47 +116,54 @@
                         name="email"
                         placeholder="Exemple@Exemple.fr"
                         required
-                    /><br>
-                </div>
-                <div
-                    class="formData">
-                    <label for="birthdate">Date de naissance</label><br>
+                    />
                     <div class="condition">
                         <ul>
                             <li>Champs obligatoire</li>
+                            <li>Adresse Email valide</li>
                         </ul>
                     </div>
+                    
+                </div>
+                <div
+                    class="formData">
+                    <label for="birthdate">Date de naissance</label>
+                   
                     <input
                         class="text-control"
                         type="date"
                         id="birthdate"
                         name="birthdate"
                         required
-                    /><br>
+                    /> 
+                    <div class="condition">
+                        <ul>
+                            <li>Champs obligatoire</li>
+                        </ul>
+                    </div>
+                    
+                   
                 </div>
                 <div
                     class="formData">
-                    <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                    <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
+                   
+                    <input type="number" class="text-control" id="quantity" name="quantity" min="1" max="99" required>
                     <div class="condition">
                         <ul>
                             <li>Champs obligatoire</li>
                             <li>Nombre entre 0 - 100</li>
                         </ul>
                     </div>
-                    <input type="number" class="text-control" id="quantity" name="quantity" min="1" max="99" required>
                 </div>
                 <p class="text-label">Quelles villes ?</p>
                 
                 <div
-                    class="formData">
-                    <div class="condition">
-                            <ul>
-                                <li>veuillez cocher une case</li>
-                            </ul>
-                        </div>
+                    class="formData checkbox-group">
+                       
                     <input
                         class="checkbox-input"
-                        type="checkbox"
+                        type="radio"
                         id="location1"
                         name="location"
                         value="New York"
@@ -170,7 +174,7 @@
                     >
                     <input
                         class="checkbox-input"
-                        type="checkbox"
+                        type="radio"
                         id="location2"
                         name="location"
                         value="San Francisco"
@@ -181,7 +185,7 @@
                     >
                     <input
                         class="checkbox-input"
-                        type="checkbox"
+                        type="radio"
                         id="location3"
                         name="location"
                         value="Seattle"
@@ -192,7 +196,7 @@
                     >
                     <input
                         class="checkbox-input"
-                        type="checkbox"
+                        type="radio"
                         id="location4"
                         name="location"
                         value="Chicago"
@@ -203,7 +207,7 @@
                     >
                     <input
                         class="checkbox-input"
-                        type="checkbox"
+                        type="radio"
                         id="location5"
                         name="location"
                         value="Boston"
@@ -214,7 +218,7 @@
                     >
                     <input
                         class="checkbox-input"
-                        type="checkbox"
+                        type="radio"
                         id="location6"
                         name="location"
                         value="Portland"
@@ -223,33 +227,40 @@
                     <span class="checkbox-icon"></span>
                     Portland</label
                     >
+                    <div class="condition">
+                        <ul>
+                            <li>veuillez cocher une case</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div
                     class="formData">
-                    <div class="condition">
-                        <ul>
-                            <li>Champs obligatoire</li>
-                        </ul>
-                    </div>
+                   
                     <input
                     class="checkbox-input"
                     type="checkbox"
                     id="checkbox1"
-                    checked
+                    
                     />
                     <label class="checkbox2-label" for="checkbox1" required>
                         
                     <span class="checkbox-icon"></span>
                     J'ai lu et accepté les conditions d'utilisation.
                     </label>
-                    <br>
+                    <div class="condition">
+                        <ul>
+                            <li>Champs obligatoire</li>
+                        </ul>
+                    </div>
+                    
+                    
                     <input class="checkbox-input" type="checkbox" id="checkbox2" />
                     <label class="checkbox2-label" for="checkbox2">
                     <span class="checkbox-icon"></span>
                     Je souhaite être prévenu des prochains évènements.
                     </label>
-                    <br>
+                    
                 </div>
                 <input
                     class="btn-submit"
@@ -257,8 +268,13 @@
                     class="button"
                     value="C'est parti"
                 />
+                
                 </form>
+                
             </div>
+            <div class="success-div">
+                <div class="success-form">Formulaire envoyer!<br>Félicitation vous êtes inscrit.</div>
+                <div><button class="func-close-modal btn-close-modal">Fermer</button></div></div>
             </div>
         </div>
         </main>

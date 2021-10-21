@@ -11,14 +11,16 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeModalBtn = document.querySelector(".close");
+const closeModalBtn = document.querySelectorAll(".func-close-modal");
 const btnSubmit = document.querySelector(".btn-submit");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Close modal event
-closeModalBtn.addEventListener("click", closeModal);
+closeModalBtn.forEach((item) => {
+  item.addEventListener("click", closeModal);
+});
 
 // launch modal form
 function launchModal() {
@@ -30,12 +32,12 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// teste toute les checkbox avec une erreur critique pour les conditions générales
 function testCheckbox(arrayOfCheckbox) {
   var countCheckedCheckbox = 0;
   var errorCritique = false;
+
   arrayOfCheckbox.forEach((checkbox) => {
-    // console.log(checkbox);
-    // var key = checkbox.innerText
     if (checkbox.id === "checkbox1") {
       // verif condition generale d'utilisation
       errorCritique = checkbox.checked ? true : false;
@@ -53,20 +55,17 @@ function testCheckbox(arrayOfCheckbox) {
   return countCheckedCheckbox > 0 ? true : false;
 }
 
+// teste tout les input de type texte
 function testInput(input) {
-  //console.log(input);
-
   var regexExp = getRegexExp(input.id);
   var result = regexExp.test(input.value);
-  // console.log(regexExp, result);
 
   return result;
 }
 
+// change les css des inputs au cas ou il y aurait des erreur de saisie
 function changeCss(res, divFormController) {
   if (!res) {
-    // result = responseTest;
-
     divFormController.getElementsByClassName("condition")[0].style.display =
       "block";
     divFormController.setAttribute("data-error-visible", "true");
@@ -77,19 +76,20 @@ function changeCss(res, divFormController) {
   }
 }
 
+// fait apparaitre le loader et le message de succes
 function AnimationFormValid(opacity) {
   document.getElementById("form").style.cssText = "display : none;";
 
   document.getElementById("loader").style.opacity =
     parseInt(opacity, 10) === 1 ? 0 : 1;
-  setTimeout(() => {
-    document.getElementsByClassName("modal-body")[0].innerHTML =
-      "Formulaire envoyer!<br>Félicitation vous êtes inscrit.";
-  }, 750);
 
-  console.log("ok");
+  setTimeout(() => {
+    document.getElementsByClassName("modal-body")[0].style.display = "none";
+    document.getElementsByClassName("success-div")[0].style.display = "flex";
+  }, 750);
 }
 
+// boucle sur les inputs et lance les testes
 function validate(e) {
   var formIsValid = {
     result: true,
@@ -99,29 +99,30 @@ function validate(e) {
   e.preventDefault();
   formData.forEach(async (divFormController, i) => {
     var element = divFormController.querySelectorAll("input");
-    // console.log(element);
+
     var res;
     // test des champs
     if (element.length > 1) {
       res = testCheckbox(element);
       formIsValid.error_list["checkbox" + i] = res;
     } else {
+      // test des inputs textes
       res = testInput(element[0]);
 
       formIsValid.error_list[element[0].id] = res;
     }
+    // changement du css pour afficher les erreurs si nécessaire
     changeCss(res, divFormController);
   });
 
   for (const [, value] of Object.entries(formIsValid.error_list)) {
-    console.log("aaaaaa", value);
+    // Verification de error_list
 
     if (value === false) {
       formIsValid.result = false;
     }
   }
 
-  console.log("aze", formIsValid);
   return formIsValid;
 }
 
@@ -134,10 +135,8 @@ async function onSubmit(e) {
     AnimationFormValid(0);
 
     ///envoie du formulaire
-
-    setTimeout(() => {}, 2000);
   } else {
-    alert("formulaire incorrect");
+    // renvoyer une erreur
   }
 
   return "ok";

@@ -31,8 +31,11 @@ img {
 }
 
 .topnav {
+  justify-content: space-between;
+  display: flex;
   overflow: hidden;
   margin: 3.5%;
+  align-items: center;
 }
 .header-logo {
   float: left;
@@ -101,8 +104,23 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
+  .header-logo img {
+    width: 200px;
+  }
+  label {
+    font-size: 15px !important;
+  }
+  .hero-text {
+    font-size: 15px !important;
+  }
+  .checkbox-label {
+    font-size: 10px !important;
+  }
+}
+
+.checkbox-group {
+  margin-bottom: 20px;
 }
 
 main {
@@ -189,6 +207,36 @@ main {
   padding: 15px 8%;
   margin: 15px auto;
   min-height: 25em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.close-modal {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+
+  justify-content: center;
+}
+
+.success-div {
+  display: none;
+  padding: 15px 8%;
+  margin: 15px auto;
+  min-height: 25em;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-body .success-form {
+  display: flex;
+  justify-content: center;
 }
 
 label {
@@ -239,9 +287,14 @@ input[data-error]::after {
 .checkbox2-label {
   position: relative;
   margin-left: 36px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: normal;
 }
+
+.checkbox2-label {
+  margin-bottom: 17px;
+}
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -325,7 +378,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close-modal {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -423,7 +477,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -481,6 +534,18 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+@media screen and (max-width: 600px) {
+  .hero-headline {
+    font-size: 3.5rem !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .hero-headline {
+    font-size: 2rem !important;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -522,11 +587,10 @@ footer {
 
 .condition {
   display: none;
-  font-size: 13px;
+  color: red;
+  font-size: 10px;
   padding: 5px 5px 5px 20px;
   margin: 5px 5px 5px 5px;
-  border-radius: 10px;
-  background-color: #dc3545;
 }
 
 #error-msg {
@@ -541,6 +605,10 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+a.active .border-bottom {
+  border-bottom: 1px solid white;
 }
 
 /* Loader */
